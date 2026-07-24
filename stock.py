@@ -18,10 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/stock/{symbol}")
 def _tw_suffix(s: str) -> str:
     return s if "." in s else f"{s}.TW"
 
+@app.get("/stock/{symbol}")
 def get_stock(
     symbol: str,
     period: Literal["1d", "5d", "1mo", "1y"] = Query("1mo", description="時間區間: 1d(1天), 5d(1週), 1mo(1月), 1y(1年)"),
